@@ -72,8 +72,10 @@ _Ejercicio 1_
 ## Escriba el ejemplo en el siguiente espacio (1 línea de código) ##
 
 # --------------------------- #
-x
 
+x <- rnorm(5)
+
+x
 ```
 
 Los comentarios sobre el código podemos agregarlos con _#_.
@@ -84,7 +86,7 @@ Ahora, si deseamos obtener mayor información sobre una función podemos utilizar 
 _Ejercicio 2_
 Consulte la ayuda a través de R estudio para entender en qué consiste el paquete "base" de R. ¿Qué ofrece el paquete, explore su contenido? 
 
-R/
+R/ Ofrece el paquete predefinido de R.
 
 
 
@@ -98,6 +100,8 @@ Como hemos mencionado, la aplicación de la función rnorm nos dio un vector de ci
 
 ```
 vector <- c(1,4,5,6)
+vector <- c(10,20,30,40)
+vector
 
 ```
 
@@ -124,7 +128,9 @@ Escriba un vector de enteros con cuatro elementos
 
 # --------------------------- #
 vector
-
+y <- c(1,2,3,4)
+y
+add (x+y)
 ```
 Hemos creado un vector de cuatro valores y lo hemos asignado a la variable _vector_.
 
@@ -155,7 +161,7 @@ W^{(2)} =
 \left(\begin{array}{ds} 
 W^{(2)}_{11} \\ 
 W^{(2)}_{21} \\
-W^{(2)}_{31}
+W^{(2)}_{31}   
 \end{array}\right)
 $$ 
 
@@ -221,6 +227,9 @@ _Ejercicio 4_
 # Por favor escriba los dos vectores en el siguiente espacio (2 lineas de código)
 
 
+age <- c(01,03,05,02,11)
+weight <- c(4.4,5.3,7.2,5.2,8.5)
+
 # --------------------------- #
 print("Vector de Age")
 age
@@ -261,7 +270,7 @@ _Ejercicio 5_
 # Escriba el código que permita instalar y cargar los dos paquetes (cuatro líneas)
 
 
-
+install.packages("tidyverse")
 
 # --------------------------- #
 ```
@@ -294,26 +303,28 @@ _Ejercicio 7_
 # --------------------------- #
 vector
 
+vector<-seq(1,10, by=2)
+
 ```
 
 Un programador también puede definir sus propias funciones con el fin de crear fragmentos reutilizables de código que tienen una función que puede ser reutilizada en varias partes del proyecto o en otros.
 
 
 ```{R example}
-pairList <- function(array)
+pairList <- function(lista,multiplo)
 {
 #dentro de los {} van las lineas de código de la función
-for (number in array)
+for (number in lista)
   {
-    if(number%%2==0)
+    if(number%%multiplo==0)
     {
       print(number)  
     }
   }
 }
 
-lista <- seq(1,10)
-pairList(lista)
+l2 <- seq(1,100)
+pairList(l2,6)
 
 ```
 
@@ -329,6 +340,7 @@ _Ejercicio 8_
 Cree un vector con nombre a y asignele los siguientes valores: k, j, h, a, c y m. 
 ```{R vector2}
 # 1 linea de código
+a<- c("k","j","h","a","c","m")
 
 # --------------------------- #
 ```
@@ -339,11 +351,11 @@ a[3]
 a[c(1, 3, 5)]
 a[2:6]
 ```
-R1/ 
+R1/ Devuelve posición
 
-R2/
+R2/ llamar posiciónes entre un rango especificamente
 
-R3/
+R3/Llamar elementos del vector en un rango definido uno a uno
 
 ###Matriz
 
@@ -352,7 +364,7 @@ Son arreglos de dos dimensiones en donde todos los registros son del mismo tipo,
 _Ejemplo de matriz_
 
 ```{R matrizExample}
-x <- matrix(1:20, nrow=5, ncol=4)
+x <- matrix(1:20, nrow=5, ncol=4, byrow= TRUE)
 x
 print("")
 class(x)
@@ -420,7 +432,7 @@ Vamos a utilizar un conjunto de datos ( __dataset__ ) de los vuelos realizados e
 ```{R provided}
 # La siguiente línea de código especifica que vamos a utilizar "flights" del paquete nycflights13, el uso de :: se realiza con la finalidad que no se presenten problemas si hay más variables "flights" en nuestro entorno de trabajo.
 nycflights13::flights
-flights
+flights <- nycflights13::flights
 ```
 
 El _Data frame_ es más general que una matriz ya que puede almacenar diferentes tipos de datos (númericos, carácteres, etc.). Es la estructura más utilizada en los proyectos de R. 
@@ -462,6 +474,8 @@ diabetes <- c("Type1", "Type2", "Type1", "Type1")
 status <- c("Poor", "Improved", "Excellent", "Poor")
 patientData <- data.frame(patientID, age, diabetes, status)
 patientData
+View(patientData)
+
 ```
 
 La forma de acceder a la información en el data.frame se puede realizar de varias maneras muy similar que las matrices.
